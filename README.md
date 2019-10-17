@@ -26,7 +26,9 @@ Open 3 browsers and serve the path to blog.php with php's server eg localhost:80
 Ctrl + J in the other two and open index.html using the path to the file.
 Fill the form in blog.php and submit, check the other two subcribed browsers for the push messages in the console.
 
-## Resources
+ Resources
 - http://socketo.me/
 - http://socketo.me/docs/push
 - https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
+
+## dar nazar dashteh bashid ke dar hal hazer Ratchet az SSL poshtibani nemikonan pas bayad server be CloudFlare moteasel nabashad

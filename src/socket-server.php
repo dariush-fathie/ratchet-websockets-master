@@ -6,6 +6,7 @@ use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
+require_once('Chat.php');
 
 $server = IoServer::factory(
     new HttpServer(
@@ -13,7 +14,7 @@ $server = IoServer::factory(
             new Chat()
         )
     ),
-    9010
+    8083
 );
 
 $server->run();

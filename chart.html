@@ -1,54 +1,54 @@
 <html>
-    <head>
-        <link href="./chart.css" rel="stylesheet">
-        <!-- Pusher Server -->
-        <script src="https://rawgit.com/cboden/fcae978cfc016d506639c5241f94e772/raw/e974ce895df527c83b8e010124a034cfcf6c9f4b/autobahn.js"></script>
-    </head>
-    <body>
-        <div class="skills">     
-            <div class="charts">
-                <div class="chart chart--design">
-                    <span class="chart__title">2018 Election Results</span>
-                    <ul class="chart--horiz">
-                        <!-- <li class="chart__bar" style="width: 45%;">
-                            <span class="chart__label">
-                                Photoshop
-                            </span>
-                        </li> -->
-                    </ul>
-                </div>
-            </div>
+<head>
+    <link href="./chart.css" rel="stylesheet">
+    <!-- Pusher Server -->
+    <script src="https://rawgit.com/cboden/fcae978cfc016d506639c5241f94e772/raw/e974ce895df527c83b8e010124a034cfcf6c9f4b/autobahn.js"></script>
+</head>
+<body>
+<div class="skills">
+    <div class="charts">
+        <div class="chart chart--design">
+            <span class="chart__title">2018 Election Results</span>
+            <ul class="chart--horiz">
+                <!-- <li class="chart__bar" style="width: 45%;">
+                    <span class="chart__label">
+                        Photoshop
+                    </span>
+                </li> -->
+            </ul>
         </div>
+    </div>
+</div>
 
-        <script>
-            var partyResults = [];
-            // Pusher Server
-            var conn = new ab.Session('ws://localhost:8080',
-            function socketCon() {
-                    conn.subscribe('elections', function(topic, data) {
-                        // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
-                        console.log('New results posted to category');
-                        console.log(topic);
-                        console.log(data);
-                        var chartUlItem = document.getElementsByClassName('chart--horiz')[0];
+<script>
+    var partyResults = [];
+    // Pusher Server
+    var conn = new ab.Session('ws://localhost:9010',
+        function socketCon() {
+            conn.subscribe('elections', function (topic, data) {
+                // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
+                console.log('New results posted to category');
+                console.log(topic);
+                console.log(data);
+                var chartUlItem = document.getElementsByClassName('chart--horiz')[0];
 
-                        var listItem = document.createElement('li');
-                        listItem.setAttribute("class", "chart__bar" );
-                        listItem.setAttribute("style", 'width:'+data.votes+'%' );
-                        listItem.appendChild(document.createTextNode(data.party+' had '+ data.votes +' % votes'));
+                var listItem = document.createElement('li');
+                listItem.setAttribute("class", "chart__bar");
+                listItem.setAttribute("style", 'width:' + data.votes + '%');
+                listItem.appendChild(document.createTextNode(data.party + ' had ' + data.votes + ' % votes'));
 
-                        var spanItem = document.createElement('span');
-                        spanItem.setAttribute("class", "chart__label");
+                var spanItem = document.createElement('span');
+                spanItem.setAttribute("class", "chart__label");
 
-                        listItem.appendChild(spanItem);
-                        chartUlItem.appendChild(listItem);
-                    });
-                },
-                function() {
-                    console.warn('WebSocket connection closed');
-                },
-                {'skipSubprotocolCheck': true}
-            );
-        </script>
-    </body>
+                listItem.appendChild(spanItem);
+                chartUlItem.appendChild(listItem);
+            });
+        },
+        function () {
+            console.warn('WebSocket connection closed');
+        },
+        {'skipSubprotocolCheck': true}
+    );
+</script>
+</body>
 </html>
